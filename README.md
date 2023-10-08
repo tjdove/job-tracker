@@ -1,5 +1,5 @@
 # Job Tracker Application for finding Tim a Job
- - Tracks Users, Jobs, contacts, corespondance, etc
+ - Tracks Users, Jobs, contacts, correspondence, etc
  - Stack includes:
    1) React
    2) TypeScript
