@@ -1,32 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 import "./index.css";
 
 function App() {
-  useEffect(() => {
-    (async () => {
-      const result = await axios
-        .get("/api/users")
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      console.log(result);
-    })();
-  }, []);
+  const [count, setCount] = useState(0);
 
   return (
     <>
       <div className="card w-96 bg-base-100 shadow-xl">
-        <figure></figure>
+        <figure>
+          <img
+            src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+            alt="Shoes"
+          />
+        </figure>
         <div className="card-body">
           <h2 className="card-title">Shoes!</h2>
           <p>If a dog chews shoes whose shoes does he choose?</p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Test</button>
+            {/* <button className="btn btn-primary">Buy Now</button> */}
+            <button
+              className="btn btn-primary"
+              onClick={() => setCount((count) => count + 1)}
+            >
+              count is {count}
+            </button>
           </div>
         </div>
       </div>

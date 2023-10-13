@@ -1,22 +1,23 @@
 import express from "express";
 
 import { getUser, getUsers, createUser } from "./database.js";
+
 const app = express();
 app.use(express.json());
 
-app.get("/users", async (req, res) => {
+app.get("/api/users", async (req, res) => {
   const users = await getUsers();
   res.send(users);
 });
 
-app.get("/users/:id", async (req, res) => {
+app.get("/api/users/:id", async (req, res) => {
   const id = req.params.id;
   console.log("/users/:id:  " + id);
   const user = await getUser(id);
   res.send(user);
 });
 
-app.post("/users", async (req, res) => {
+app.post("/api/users", async (req, res) => {
   const { first_name, last_name, addr1, addr2, city, state, zip } = req.body;
   console.log("/users/:POST:  " + JSON.stringify(req.body));
   const user = await createUser(
