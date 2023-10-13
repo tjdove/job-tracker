@@ -17,7 +17,13 @@ function App() {
           <h2 className="card-title">Shoes!</h2>
           <p>If a dog chews shoes whose shoes does he choose?</p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
+            {/* <button className="btn btn-primary">Buy Now</button> */}
+            <button
+              className="btn btn-primary"
+              onClick={() => setCount((count) => count + 1)}
+            >
+              count is {count}
+            </button>
           </div>
         </div>
       </div>
@@ -27,9 +33,6 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
