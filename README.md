@@ -7,4 +7,6 @@
    4) Tailwind - CSS
    5) Daisy UI Componenets
    6) MySQL/PlanetScale
+   7) Axios
+   8) Express
 
