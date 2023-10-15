@@ -7,3 +7,13 @@ export interface User {
   state: string;
   zip: string;
 }
+
+export interface Job {
+  id: number;
+  title: string;
+  company: string;
+  contact: string;
+  phoneNumber: string;
+  state: string;
+  zip: string;
+}
