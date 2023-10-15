@@ -1,47 +1,41 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { User } from "./types";
 
-import "./index.css";
+function UserList() {
+  const [users, setUsers] = useState<User[]>([]);
 
-function App() {
   useEffect(() => {
-    (async () => {
-      const result = await axios
-        .get("/api/users")
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      console.log(result);
-    })();
+    // Fetch the array of user objects
+    axios
+      .get<User[]>("./api/users")
+      .then((response) => {
+        const fetchedUsers: User[] = response.data;
+        setUsers(fetchedUsers);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
   return (
-    <>
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <figure></figure>
-        <div className="card-body">
-          <h2 className="card-title">Shoes!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Test</button>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <div className="w-96 bg-white shadow rounded">TheTest</div>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-    </>
+    <div>
+      <h2>List of Users</h2>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            <strong>
+              {user.first_name} {user.last_name}
+            </strong>
+            <p>Address: {user.addr1}</p>
+            <p>Address: {user.addr2}</p>
+            <p>State: {user.state}</p>
+            <p>Zip: {user.zip}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
-export default App;
+export default UserList;
